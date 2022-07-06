@@ -1,19 +1,28 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
+@Entity("specifications")
 class Specification {
-    id?: String;
-    name: String;
-    description: String;
-    created_at: Date;
+  @PrimaryColumn()
+  id?: string;
 
-    constructor(){
-        //constructor é uma função que é chamada toda vez que
-        //a classe é instanceada
-        if(!this.id){
-            this.id = uuidv4();
-            //this se refere ao própio objeto
-        }
+  @Column()
+  name: string;
+
+  @Column()
+  description: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  constructor() {
+    // constructor é uma função que é chamada toda vez que
+    // a classe é instanceada
+    if (!this.id) {
+      this.id = uuidv4();
+      // this se refere ao própio objeto
     }
+  }
 }
 
-export { Specification }
+export { Specification };
